@@ -1,7 +1,7 @@
-
-
 const backpack = document.getElementById("backpack");
 const grabber = backpack ? backpack.querySelector(".grabber") : null;
+
+
 
 const closedOffset = 210;
 let isOpen = true;
