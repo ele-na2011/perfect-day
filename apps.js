@@ -1,7 +1,9 @@
+
+
 const backpack = document.getElementById("backpack");
 const grabber = backpack ? backpack.querySelector(".grabber") : null;
 
-const closedOffset = 260;
+const closedOffset = 210;
 let isOpen = true;
 let dragging = false;
 let startY = 0;
@@ -19,8 +21,44 @@ function snapToState(openState) {
 }
 
 function getCurrentOffset() {
-    const match = backpack.style.transform.match(/translateY\(([-\d.]+)px\)/);
-    return match ? Number(match[1]) : 0;
+    const transform = backpack ? backpack.style.transform : "";
+
+    if (!transform || transform === "") {
+        return 0;
+    }
+
+    const startText = "translateY(";
+    const startIndex = transform.indexOf(startText);
+
+    if (startIndex === -1) {
+        return 0;
+    }
+
+    let valueText = "";
+    let i = startIndex + startText.length;
+
+    while (i < transform.length) {
+        const ch = transform[i];
+
+        if (ch === "p") {
+            break;
+        }
+
+        if (ch === "-" || ch === "." || (ch >= "0" && ch <= "9")) {
+            valueText += ch;
+        } else if (valueText !== "") {
+            break;
+        }
+
+        i++;
+    }
+
+    if (valueText === "") {
+        return 0;
+    }
+
+    const value = Number(valueText);
+    return Number.isFinite(value) ? value : 0;
 }
 
 if (backpack && grabber) {
