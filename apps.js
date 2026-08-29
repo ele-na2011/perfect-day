@@ -1,3 +1,8 @@
+const SUPABASE_URL = 'https://dcquugdppympbcnipcyk.supabase.co';
+const SUPABASE_KEY = 'sb_publishable_tSC5y75XGQ5AT1eUs7pIXw_vtAn7_bP';
+
+const db = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
 // background drag + item placement
 const field = document.querySelector(".field");
 const placedItems = document.querySelector(".placed-items");
