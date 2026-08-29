@@ -1,9 +1,8 @@
+// backpack grabber
 const backpack = document.getElementById("backpack");
 const grabber = backpack ? backpack.querySelector(".grabber") : null;
 
-
-
-const closedOffset = 210;
+const closedOffset = 200;
 let isOpen = true;
 let dragging = false;
 let startY = 0;
