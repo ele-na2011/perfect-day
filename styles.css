@@ -723,5 +723,3 @@ dialog input:focus {
 /* cursor feedback while an item is armed */
 body.placing .tile.empty { opacity: .18; background: rgba(255,255,255,.14); }
 body.placing .field      { cursor: crosshair; }
-}
-
