@@ -386,6 +386,14 @@ button {
     padding: var(--pad);
     width: 100%;
     max-height: 200px;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.slots::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+    display: none;
 }
 
 .slot {
