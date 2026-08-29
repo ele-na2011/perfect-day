@@ -95,4 +95,13 @@ if (backpack && grabber) {
 
     window.addEventListener("pointerup", finishDrag);
     window.addEventListener("pointercancel", finishDrag);
+}   
+// game guide panel toggle
+const guideBtn = document.querySelector(".titlebar .pill-btn");
+const panel = document.querySelector(".panel");
+
+if (guideBtn && panel) {
+    guideBtn.addEventListener("click", () => {
+        panel.classList.toggle("open");
+    });
 }
