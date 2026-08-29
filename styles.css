@@ -162,12 +162,13 @@ button {
     left: 20px;
     z-index: 5;
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     gap: 10px;
 }
 
 .titlebar h1 {
-    font-size: var(--fs-title);
+    font-size: 22px;
+    line-height: 1.05;
     letter-spacing: .02em;
 }
 
@@ -191,6 +192,7 @@ button {
     place-items: center;
     transition: transform .15s ease;
     flex-shrink: 0;
+    margin-top: 2px;
 }
 
 .pill-btn .pill-lines,
