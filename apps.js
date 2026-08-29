@@ -2,6 +2,21 @@
 let happiness = 0;
 let coins = 0;
 
+const gameMusic = document.getElementById("bg-music");
+
+if (gameMusic) {
+    gameMusic.volume = 0.25;
+
+    const startMusic = () => {
+        gameMusic.play().catch(() => {
+            // autoplay may be blocked until the user interacts with the page
+        });
+    };
+
+    document.addEventListener("pointerdown", startMusic, { once: true });
+    document.addEventListener("keydown", startMusic, { once: true });
+}
+
 // background drag + item placement
 const field = document.querySelector(".field");
 const placedItems = document.querySelector(".placed-items");
