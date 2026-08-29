@@ -3,6 +3,9 @@ const SUPABASE_KEY = 'sb_publishable_tSC5y75XGQ5AT1eUs7pIXw_vtAn7_bP';
 
 const db = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
+// happiness tracker, function later
+let happiness = 0;
+
 // background drag + item placement
 const field = document.querySelector(".field");
 const placedItems = document.querySelector(".placed-items");
@@ -15,7 +18,7 @@ let bgX = 0;
 let bgY = 0;
 
 const imageWidth = 2500;
-const imageHeight = 1406;
+const imageHeight = 1350;
 
 // move the map
 field.addEventListener("mousedown", (e) => {
@@ -58,6 +61,14 @@ document.addEventListener("mouseup", () => {
     isDragging = false;
 });
 
+// happiness !!!
+function updateHappiness() {
+    const happinessText = document.querySelector("#happy-value");
+    const happinessBar = document.querySelector("#bar-fill");
+
+    happinessText.textContent = `${happiness}%`;
+    happinessBar.style.width = `${happiness}%`;
+}
 
 // create a sticker from the backpack
 inventoryItems.forEach((item) => {
@@ -69,6 +80,10 @@ inventoryItems.forEach((item) => {
 
         sticker.src = item.src;
         sticker.alt = item.alt;
+        
+        happiness += Number(item.dataset.happiness);
+        updateHappiness();
+
         sticker.className = "placed-item";
 
         placedItems.appendChild(sticker);
@@ -85,9 +100,7 @@ inventoryItems.forEach((item) => {
     });
 });
 
-
 // move an existing sticker
-
 function dragSticker(sticker, startEvent) {
     let startX = startEvent.clientX;
     let startY = startEvent.clientY;
