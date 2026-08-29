@@ -1,19 +1,6 @@
-.welcomescreen {
-    font-size: x-large;
-    text-align: center;
-}
 
-.enterbutton {
-    font-size: x-large;
-    border-radius: 10px;
-    padding: 5px 8px;
-    border: 2px solid var(--ink);
-}
 
-.enterbutton a {
-    text-decoration: none;
-    color: inherit;
-}
+
 
 :root {
     /* colour palette */
