@@ -7,38 +7,59 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400;700&display=swap" rel="stylesheet">
     </head>
-    <body class = "gamescreen">
-        <h1 class = "titletext">daydream village</h1>
-        <p>build a day together</p>
+<body>
+  <div class="world">
 
-        <button class = "gameguidebutton">game guide</button>
+    <!-- top bar -->
+    <div class="titlebar">
+      <h1>daydream<br>village</h1>
+      <button id="guide-btn" class="pill-btn">i!</button>
+    </div>
 
-        <div class = "gameguide">
-            <h3>game guide</h3>
-            <ul>
-                <li>complete 2 actions to collect coins</li>
-                <li>coins are multiplied by impact</li>
-                <li>use coins to buy loot boxes (under development)</li>
-                <li>maintain village happiness</li>
-            </ul>
+    <!-- top right stats -->
+    <aside class="stats">
+      <div class="stat time-stat">
+            <span class="stat-label">time</span>
+            <span class="stat-value" id="clock">08:00</span>
         </div>
+        <div class="stat">
+        <span class="stat-label">coins</span>
+        <span class="stat-value" id="coins">0</span>
+      </div>
+      <div class="stat">
+        <span class="stat-label">town<br>happiness</span>
+        <span class="stat-value" id="happy-value">92%</span>
+      </div>
+      <div class="bar"><div class="bar-fill" id="bar-fill"></div></div>
+    </aside>
 
-        <div class = "status" id = "status">
-            <div id = "timeElement">
+    <!-- the town -->
+    <div id="grid" class="field"></div>
 
-            </div>
-            <div id = "happinessBar">
-                <h3>village happiness</h3>
-            </div>
-            <div id = "coinBalance">
-                <h3>coin balance</h3>
-            </div>
+    <!-- side panel -->
+    <section id="guide" class="panel open">
+      <h2><span class="badge">i!</span> Game Guide</h2>
+      <div class="panel-body">
+        <p>situated in a cozy little town! feat. alexis lee and rachel li</p>
+        <p>i love frogs and arctic foxes…</p>
+      </div>
+    </section>
+
+    <!-- backpack -->
+    <section class="backpack" id="backpack">
+      <div class="grabber"></div>
+      <div class="backpack-head">
+        <h2>backpack</h2>
+        <div class="actions-pill">
+          <span id="actions">2 actions left today</span>
+          <span class="dots">⋮⋮</span>
         </div>
+      </div>
+      <div class="slots" id="slots"></div>
+    </section>
 
-        <div class = "backpack" id = "backpack">
-            <h3>backpack</h3>
-        </div>
+  </div>
+</body>
 
 
-    </body>
 </html>
