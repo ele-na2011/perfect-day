@@ -1,3 +1,61 @@
+// background drag
+const field = document.querySelector(".field");
+
+let isDragging = false;
+let X = 0;
+let Y = 0;
+let bgX = 0;
+let bgY = 0;
+
+field.addEventListener("mousedown", (e) => {
+    isDragging = true;
+    X = e.clientX;
+    Y = e.clientY;
+});
+
+document.addEventListener("mousemove", (e) => {
+    if (!isDragging) return;
+
+    const dx = e.clientX - X;
+    const dy = e.clientY - Y;
+
+    let newX = bgX + dx;
+    let newY = bgY + dy;
+
+    const fieldWidth = field.offsetWidth;
+    const fieldHeight = field.offsetHeight;
+
+    const imageWidth = 1600;
+
+    const imageHeight = 900;
+
+    const minX = fieldWidth - imageWidth;
+    const minY = fieldHeight - imageHeight;
+
+    newX = Math.min(0, Math.max(minX, newX));
+    newY = Math.min(0, Math.max(minY, newY));
+
+    field.style.backgroundPosition = `${newX}px ${newY}px`;
+});
+
+document.addEventListener("mouseup", (e) => {
+    if (!isDragging) return;
+
+    const dx = e.clientX - X;
+    const dy = e.clientY - Y;
+
+    bgX += dx;
+    bgY += dy;
+
+    const minX = field.offsetWidth - 1600;
+    const minY = field.offsetHeight - 900;
+
+    bgX = Math.min(0, Math.max(minX, bgX));
+    bgY = Math.min(0, Math.max(minY, bgY));
+
+    isDragging = false;
+});
+
 // backpack grabber
 const backpack = document.getElementById("backpack");
 const grabber = backpack ? backpack.querySelector(".grabber") : null;
@@ -21,18 +79,14 @@ function snapToState(openState) {
 
 function getCurrentOffset() {
     const transform = backpack ? backpack.style.transform : "";
-
     if (!transform || transform === "") {
         return 0;
     }
-
     const startText = "translateY(";
     const startIndex = transform.indexOf(startText);
-
     if (startIndex === -1) {
         return 0;
     }
-
     let valueText = "";
     let i = startIndex + startText.length;
 
