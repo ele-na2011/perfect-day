@@ -91,7 +91,7 @@ button {
 
 .field {
     position: absolute;
-    inset: 38px 10px 10px 10px;
+    inset: 15px 15px 15px 15px;
     background: var(--field);
     border-radius: var(--r-lg);
     display: grid;
