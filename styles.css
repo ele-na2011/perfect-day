@@ -60,6 +60,11 @@ h1, h2 {
     line-height: 1.15;
 }
 
+a {
+    color: var(--ink);
+    text-decoration: none;
+}
+
 button {
     font: inherit;
     text-transform: inherit;
