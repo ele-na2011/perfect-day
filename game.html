@@ -11,13 +11,15 @@
 <div class="world">
     <div class="titlebar">
         <h1>daydream<br>village</h1>
-        <button id="guide-btn" class="pill-btn">i!</button>
+        <button id="guide-btn" class="pill-btn" aria-label="Toggle game guide">
+            <span class="pill-lines" aria-hidden="true"></span>
+        </button>
     </div>
 
     <aside class="stats">
         <div class="stat time-stat">
             <span class="stat-label">time</span>
-            <span class="stat-value" id="clock">08:00</span>
+            <span class="stat-value" id="timeElement">08:00</span>
         </div>
         <div class="stat">
             <span class="stat-label">coins</span>
@@ -35,8 +37,7 @@
     <section id="guide" class="panel open">
         <h2><span class="badge">i!</span> Game Guide</h2>
         <div class="panel-body">
-            <p>situated in a cozy little town! feat. alexis lee and rachel li</p>
-            <p>i love frogs and arctic foxes…</p>
+            <p>two actions a day to improve the happiness of a village and earn coins!</p>
         </div>
     </section>
 
@@ -50,11 +51,21 @@
             </div>
         </div>
         <div class="slots" id="slots">
-            <div class="slot"></div>
-            <div class="slot"></div>
-            <div class="slot"></div>
-            <div class="slot"></div>
-            <div class="slot"></div>
+            <div class="slot">
+                <img src = "bench.png" alt = "bench" class = "item">
+            </div>
+            <div class="slot">
+                <img src = "twee.png" alt = "tree" class = "item">
+            </div>
+            <div class="slot">
+                <img src = "lemon.png" alt = "lemon" class = "item">
+            </div>
+            <div class="slot">
+                <img src = "slide.png" alt = "slide" class = "item">
+            </div>
+            <div class="slot">
+                <img src = "trash.png" alt = "trash" class = "item">
+            </div>
         </div>
     </section>
 </div>
