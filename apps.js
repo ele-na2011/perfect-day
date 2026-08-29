@@ -1,5 +1,7 @@
-// background drag
+// background drag + item placement
 const field = document.querySelector(".field");
+const placedItems = document.querySelector(".placed-items");
+const inventoryItems = document.querySelectorAll(".item");
 
 let isDragging = false;
 let X = 0;
@@ -7,7 +9,14 @@ let Y = 0;
 let bgX = 0;
 let bgY = 0;
 
+const imageWidth = 2500;
+const imageHeight = 1406;
+
+// move the map
 field.addEventListener("mousedown", (e) => {
+    if (e.target.closest(".placed-item")) return;
+    if (e.target.closest(".item")) return;
+
     isDragging = true;
     X = e.clientX;
     Y = e.clientY;
@@ -22,38 +31,102 @@ document.addEventListener("mousemove", (e) => {
     let newX = bgX + dx;
     let newY = bgY + dy;
 
-    const fieldWidth = field.offsetWidth;
-    const fieldHeight = field.offsetHeight;
-
-    const imageWidth = 1600;
-
-    const imageHeight = 900;
-
-    const minX = fieldWidth - imageWidth;
-    const minY = fieldHeight - imageHeight;
+    const minX = field.offsetWidth - imageWidth;
+    const minY = field.offsetHeight - imageHeight;
 
     newX = Math.min(0, Math.max(minX, newX));
     newY = Math.min(0, Math.max(minY, newY));
 
-    field.style.backgroundPosition = `${newX}px ${newY}px`;
+    bgX = newX;
+    bgY = newY;
+
+    field.style.backgroundPosition = `${bgX}px ${bgY}px`;
+
+    placedItems.style.left = `${bgX}px`;
+    placedItems.style.top = `${bgY}px`;
+    
+    X = e.clientX;
+    Y = e.clientY;
 });
 
-document.addEventListener("mouseup", (e) => {
-    if (!isDragging) return;
-
-    const dx = e.clientX - X;
-    const dy = e.clientY - Y;
-
-    bgX += dx;
-    bgY += dy;
-
-    const minX = field.offsetWidth - 1600;
-    const minY = field.offsetHeight - 900;
-
-    bgX = Math.min(0, Math.max(minX, bgX));
-    bgY = Math.min(0, Math.max(minY, bgY));
-
+document.addEventListener("mouseup", () => {
     isDragging = false;
+});
+
+
+// create a sticker from the backpack
+inventoryItems.forEach((item) => {
+    item.addEventListener("mousedown", (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+
+        const sticker = document.createElement("img");
+
+        sticker.src = item.src;
+        sticker.alt = item.alt;
+        sticker.className = "placed-item";
+
+        placedItems.appendChild(sticker);
+
+        const fieldRect = field.getBoundingClientRect();
+
+        const x = e.clientX - fieldRect.left - bgX - 50;
+        const y = e.clientY - fieldRect.top - bgY - 50;
+
+        sticker.style.left = `${x}px`;
+        sticker.style.top = `${y}px`;
+
+        dragSticker(sticker, e);
+    });
+});
+
+
+// move an existing sticker
+
+function dragSticker(sticker, startEvent) {
+    let startX = startEvent.clientX;
+    let startY = startEvent.clientY;
+
+    const startLeft = parseFloat(sticker.style.left);
+    const startTop = parseFloat(sticker.style.top);
+
+    function move(e) {
+        const dx = e.clientX - startX;
+        const dy = e.clientY - startY;
+
+        let newLeft = startLeft + dx;
+        let newTop = startTop + dy;
+
+        const maxX = field.offsetWidth - sticker.offsetWidth;
+        const maxY = field.offsetHeight - sticker.offsetHeight;
+
+        newLeft = Math.max(0, Math.min(maxX, newLeft));
+        newTop = Math.max(0, Math.min(maxY, newTop));
+
+        sticker.style.left = `${newLeft}px`;
+        sticker.style.top = `${newTop}px`;
+    }
+
+    function stop() {
+        document.removeEventListener("mousemove", move);
+        document.removeEventListener("mouseup", stop);
+    }
+
+    document.addEventListener("mousemove", move);
+    document.addEventListener("mouseup", stop);
+}
+
+
+// prevent map from moving when dragging a sticker
+placedItems.addEventListener("mousedown", (e) => {
+    const sticker = e.target.closest(".placed-item");
+
+    if (!sticker) return;
+
+    e.preventDefault();
+    e.stopPropagation();
+
+    dragSticker(sticker, e);
 });
 
 // backpack grabber
