@@ -6,11 +6,16 @@
 
 }
 
-.welcome-icon {
-    width: 200px;
-    height: 200px;
+.enterbutton {
+    font-size:x-large;
+    font-family: inherit;
+    border-radius:10px;
+    padding:5px;
+    padding-left: 8px;
+    padding-right:8px;
+    background-color:#e8dabf;
+    border-width:2px;
 }
-
 .gamescreen {
     font-size:large;
     font-family: "Pixelify Sans", sans-serif;
@@ -22,4 +27,8 @@
     font-style: normal;
     font-weight: 700;
     line-height: normal;
+}
+
+.gameguide {
+    width: 20%;
 }
