@@ -97,8 +97,8 @@ function dragSticker(sticker, startEvent) {
         let newLeft = startLeft + dx;
         let newTop = startTop + dy;
 
-        const maxX = field.offsetWidth - sticker.offsetWidth;
-        const maxY = field.offsetHeight - sticker.offsetHeight;
+        const maxX = imageWidth - sticker.offsetWidth;
+        const maxY = imageHeight - sticker.offsetHeight;
 
         newLeft = Math.max(0, Math.min(maxX, newLeft));
         newTop = Math.max(0, Math.min(maxY, newTop));
