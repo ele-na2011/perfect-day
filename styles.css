@@ -1,0 +1,25 @@
+
+.welcomescreen {
+    font-size: x-large;
+    font-family: "Pixelify Sans", sans-serif;
+    background-color: #e8dabf;
+
+}
+
+.welcome-icon {
+    width: 200px;
+    height: 200px;
+}
+
+.gamescreen {
+    font-size:large;
+    font-family: "Pixelify Sans", sans-serif;
+}
+
+.titletext {
+    color: #000;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
