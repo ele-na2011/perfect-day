@@ -1,22 +1,18 @@
 .welcomescreen {
     font-size: x-large;
-    font-family: "Pixelify Sans", sans-serif;
-    background-color: #e8dabf;
+    text-align: center;
 }
 
 .enterbutton {
     font-size: x-large;
-    font-family: inherit;
     border-radius: 10px;
     padding: 5px 8px;
-    background-color: #e8dabf;
-    border-width: 2px;
+    border: 2px solid var(--ink);
 }
 
-.gamescreen {
-    font-size: large;
-    font-family: "Pixelify Sans", sans-serif;
-    background-color: #e8dabf;
+.enterbutton a {
+    text-decoration: none;
+    color: inherit;
 }
 
 :root {
@@ -90,10 +86,7 @@ button {
     position: relative;
     width: 100vw;
     height: 100vh;
-    background: var(--cream);
-    border-radius: 0;
     overflow: hidden;
-    padding-top: 0;
 }
 
 .field {
@@ -330,25 +323,14 @@ button {
 .backpack {
     position: absolute;
     bottom: 0;
-    left: 0;
-    right: 0;
-    transform: none;
-    transform-origin: none;
+    left: 50%;
+    transform: translateX(-50%) translateY(30px);
     z-index: 8;
-    width: 100%;
-    height: auto;
-    max-width: 100%;
-    padding: 14px 24px 24px;
+    width: 600px;
+    padding: 0px 24px 24px;
+    border-radius: 20px;
     background: var(--cream-panel);
-    border-radius: 0;
     transition: transform .35s cubic-bezier(.34, 1.3, .64, 1);
-    color: #412812;
-    font-size: 40px;
-    font-weight: 700;
-}
-
-.backpack.closed {
-    transform: none;
 }
 
 .grabber {
@@ -365,12 +347,10 @@ button {
     align-items: center;
     justify-content: space-between;
     gap: 16px;
-    margin-bottom: 16px;
+    margin-bottom: 5px;
 }
 
-/* hi elena */
 .backpack-head h2 {
-    color: #412812;
     font-size: 24px;
     font-weight: 700;
 }
@@ -379,7 +359,7 @@ button {
     display: flex;
     align-items: center;
     gap: 10px;
-    padding: 7px 14px;
+    padding: 0px 14px;
     background: #E8DABF;
     border-radius: 10px;
     color: #412812;
