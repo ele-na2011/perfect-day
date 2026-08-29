@@ -1,5 +1,6 @@
-// happiness tracker, function later
+// happiness tracker, coins tracker, function later
 let happiness = 0;
+let coins = 0;
 
 // background drag + item placement
 const field = document.querySelector(".field");
@@ -56,13 +57,16 @@ document.addEventListener("mouseup", () => {
     isDragging = false;
 });
 
-// happiness !!!
+// happiness + coins!!!
 function updateHappiness() {
     const happinessText = document.querySelector("#happy-value");
     const happinessBar = document.querySelector("#bar-fill");
 
     happinessText.textContent = `${happiness}%`;
     happinessBar.style.width = `${happiness}%`;
+
+    const coinsText = document.querySelector("#coins");
+    coinsText.textContent = `${coins}`;
 }
 
 // create a sticker from the backpack
@@ -74,10 +78,12 @@ inventoryItems.forEach((item) => {
         const sticker = document.createElement("img");
 
         sticker.dataset.happiness = item.dataset.happiness;
+        sticker.dataset.coins = item.dataset.coins;
         sticker.src = item.src;
         sticker.alt = item.alt;
 
         happiness += Number(item.dataset.happiness);
+        coins += Number(item.dataset.coins);
         updateHappiness();
 
         sticker.className = "placed-item";

@@ -267,7 +267,7 @@ button {
 
 .bar-fill {
     height: 100%;
-    width: 92%;
+    width: 0%;
     background: var(--gold);
     border-radius: 99px;
     transition: width .5s ease, background .5s ease;
@@ -697,7 +697,10 @@ dialog input:focus {
 
 .placed-items {
     position: absolute;
-    inset: 0;
+    left: 0;
+    top: 0;
+    width: 2500px;
+    height: 1350px;
     pointer-events: none;
 }
 
