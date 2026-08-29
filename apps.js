@@ -105,3 +105,17 @@ if (guideBtn && panel) {
         panel.classList.toggle("open");
     });
 }
+
+//time tracker
+function updateTime() {
+    var currentTime = new Date().toLocaleTimeString([], {
+        hour: "numeric",
+        minute: "2-digit",
+        second: "2-digit"
+    });
+    var timeText = document.querySelector("#timeElement");
+    if (timeText) {
+        timeText.innerHTML = currentTime;
+    }
+}
+setInterval(updateTime, 1000);
