@@ -281,11 +281,11 @@ button {
 /* game guide */
 .panel {
     position: absolute;
-    top: 170px;
+    top: 140px;
     left: 0;
     z-index: 7;
-    width: 190px;
-    max-height: 340px;
+    width: 230px;
+    max-height: 360px;
     padding: var(--pad) 18px;
     background: var(--cream-panel);
     border-radius: 0 var(--r-md) var(--r-md) 0;
@@ -415,12 +415,6 @@ button {
     max-height: 200px;
     scrollbar-width: none;
     -ms-overflow-style: none;
-}
-
-.slots::-webkit-scrollbar {
-    width: 0;
-    height: 0;
-    display: none;
 }
 
 .slot {
