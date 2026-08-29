@@ -73,9 +73,10 @@ inventoryItems.forEach((item) => {
 
         const sticker = document.createElement("img");
 
+        sticker.dataset.happiness = item.dataset.happiness;
         sticker.src = item.src;
         sticker.alt = item.alt;
-        
+
         happiness += Number(item.dataset.happiness);
         updateHappiness();
 
@@ -140,6 +141,34 @@ placedItems.addEventListener("mousedown", (e) => {
     e.stopPropagation();
 
     dragSticker(sticker, e);
+});
+
+
+// delete items with double right click :))
+let rightClicks = 0;
+let rightClickTimer;
+
+placedItems.addEventListener("contextmenu", (e) => {
+    const sticker = e.target.closest(".placed-item");
+
+    if (!sticker) return;
+
+    e.preventDefault();
+
+    rightClicks++;
+
+    if (rightClicks === 2) {
+        happiness -= Number(sticker.dataset.happiness);
+        updateHappiness();
+        sticker.remove();
+
+        rightClicks = 0;
+        clearTimeout(rightClickTimer);
+    }
+
+    rightClickTimer = setTimeout(() => {
+        rightClicks = 0;
+    }, 400);
 });
 
 // backpack grabber
